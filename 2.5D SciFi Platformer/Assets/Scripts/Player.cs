@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float _speed = 5.0f;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //get horizontal input
         float horizontalInput = Input.GetAxis("Horizontal");
-        //define direction based on input
         Vector3 direction = new Vector3(horizontalInput, 0, 0);
-        
-        _controller.Move(direction * Time.deltaTime);
+        Vector3 velocity = direction * _speed;  // velocity is direction with (*) speed
+
+        _controller.Move(velocity * Time.deltaTime);
     }
 }
